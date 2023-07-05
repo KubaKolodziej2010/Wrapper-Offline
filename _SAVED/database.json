@@ -1,6 +1,13 @@
 {
 	"assets": [
 		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "tomp3.cc - IShowSpeed  Portuginies  Official Music Video Prod Dj Scheme.mp3",
+			"duration": 180010,
+			"id": "f05116b.mp3"
+		},
+		{
 			"type": "prop",
 			"subtype": "0",
 			"title": "Ekrot_Kaye.png",
@@ -437,6 +444,13 @@
 		}
 	],
 	"movies": [
+		{
+			"id": "bc28893",
+			"duration": "03:00",
+			"date": "2023-07-05T17:09:06.052Z",
+			"title": "my best friends dance",
+			"sceneCount": 3
+		},
 		{
 			"id": "5758b0b",
 			"duration": "00:09",
