@@ -3,6 +3,35 @@
 		{
 			"type": "prop",
 			"subtype": "0",
+			"title": "Es.png",
+			"ptype": "placeable",
+			"id": "7a053e1.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "Dead_S.png",
+			"ptype": "placeable",
+			"id": "1b93e2f.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "video",
+			"title": "bandicam 2023-07-04 18-44-25-895.mp4",
+			"width": 792,
+			"height": 444,
+			"id": "6fe9f6e.flv"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "russian-alphabet-lore-ralr.gif",
+			"ptype": "placeable",
+			"id": "0e33e52.gif"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
 			"title": "Deh",
 			"ptype": "placeable",
 			"id": "128e3a4.png"
