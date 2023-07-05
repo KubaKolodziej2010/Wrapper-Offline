@@ -1,0 +1,400 @@
+{
+	"assets": [
+		{
+			"duration": 3024,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Kidaroo] hi, this is a test of the voiceforge",
+			"id": "ae4a214.mp3"
+		},
+		{
+			"duration": 3265,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Sam] hi, my name is microsoft sam",
+			"id": "2306a92.mp3"
+		},
+		{
+			"duration": 940,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[RoboSoft Five] hello",
+			"id": "2b03836.mp3"
+		},
+		{
+			"duration": 601,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Eric] hi",
+			"id": "99dbfce.mp3"
+		},
+		{
+			"duration": 601,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Brian] hi",
+			"id": "321f5d1.mp3"
+		},
+		{
+			"duration": 2273,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Joey] ya a a a a a a a a a y",
+			"id": "7bc5b3d.mp3"
+		},
+		{
+			"duration": 418,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Joey] yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay",
+			"id": "c5bb556.mp3"
+		},
+		{
+			"duration": 522,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Joey] hi",
+			"id": "561eff3.mp3"
+		},
+		{
+			"duration": 9848,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Joey] I Got bad news, the voices removed now, the so, alvin hung removed all the voices! but anyways, this is a short video, bye guys",
+			"id": "3dafc86.mp3"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "ezgif.com-webp-to-png.png",
+			"ptype": "placeable",
+			"id": "37a54ab.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "gettyimages-1126128179-594x594.jpg",
+			"ptype": "placeable",
+			"id": "3abb957.jpg"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "Goanimate_logo_2013.svg.png",
+			"ptype": "placeable",
+			"id": "5060818.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "people.png",
+			"ptype": "placeable",
+			"id": "d52a94f.png"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Siestita - Quincas Moreira.mp3",
+			"duration": 130821,
+			"id": "4064217.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Tempos Vari - Freedom Trail Studio.mp3",
+			"duration": 168072,
+			"id": "eab1bdc.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Ticklish - Quincas Moreira.mp3",
+			"duration": 219376,
+			"id": "154d56f.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Girasol - Quincas Moreira.mp3",
+			"duration": 151693,
+			"id": "199ab38.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Dove Love - Quincas Moreira.mp3",
+			"duration": 175282,
+			"id": "70d6313.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Little Fish - Quincas Moreira.mp3",
+			"duration": 122802,
+			"id": "af7d3f2.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Fun Kid - Quincas Moreira.mp3",
+			"duration": 153260,
+			"id": "40ef198.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Little Samba - Quincas Moreira.mp3",
+			"duration": 224000,
+			"id": "7b9f38c.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Bop Walker - Freedom Trail Studio.mp3",
+			"duration": 163527,
+			"id": "ff8c77c.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "The Trapezist - Quincas Moreira.mp3",
+			"duration": 154331,
+			"id": "e6980ee.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Early Oceans - Freedom Trail Studio.mp3",
+			"duration": 170005,
+			"id": "fc4c0c9.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Pinions - Freedom Trail Studio.mp3",
+			"duration": 117316,
+			"id": "68e3d59.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Squadda B TV - Squadda B.mp3",
+			"duration": 180062,
+			"id": "d9332e7.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Calimba - E's Jammy Jams.mp3",
+			"duration": 152059,
+			"id": "7a5540c.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Playdate - The Great North Sound Society.mp3",
+			"duration": 98717,
+			"id": "9f9324f.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "My Dog Is Happy - Reed Mathis.mp3",
+			"duration": 124056,
+			"id": "873091c.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Good Morning! - Reed Mathis.mp3",
+			"duration": 131318,
+			"id": "64f31de.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Birthday Cake - Reed Mathis.mp3",
+			"duration": 138292,
+			"id": "00ce280.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Sunny Day - Reed Mathis.mp3",
+			"duration": 116872,
+			"id": "97421b1.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Bedtime - Reed Mathis.mp3",
+			"duration": 137953,
+			"id": "9179dba.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Robot Boogie - Quincas Moreira.mp3",
+			"duration": 168516,
+			"id": "8f52b27.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Rainbow Forest - Quincas Moreira.mp3",
+			"duration": 121469,
+			"id": "cc39bee.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Fun Activity Montage - Biz Baz Studio.mp3",
+			"duration": 103680,
+			"id": "78935e5.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Cuckoo Clock - Quincas Moreira.mp3",
+			"duration": 163056,
+			"id": "c665569.mp3"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "pngegg.png",
+			"ptype": "placeable",
+			"id": "91c4427.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "gummi-candy-gummib-r-i-m-a-gummy-bear-the-gummy-bear-song-i-am-your-gummy-bear-film-png-favpng-rrK6RZwBrnCUCCkQhSV2dMypt-removebg-preview.png",
+			"ptype": "placeable",
+			"id": "1f31daf.png"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Classic Caillou Anderson",
+			"themeId": "family",
+			"id": "b0490ea",
+			"share": {
+				"type": "none"
+			},
+			"tags": "",
+			"published": "0",
+			"assetId": "b0490ea"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Cody Anderson 4",
+			"themeId": "family",
+			"id": "d4d0138",
+			"share": {
+				"type": "none"
+			},
+			"tags": "",
+			"published": "0",
+			"assetId": "d4d0138"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Caillou With Star",
+			"themeId": "family",
+			"id": "35c7597",
+			"share": {
+				"type": "none"
+			},
+			"tags": "",
+			"published": "0",
+			"assetId": "35c7597"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Wayne Nathaniel",
+			"themeId": "family",
+			"id": "21e1b09",
+			"share": {
+				"type": "none"
+			},
+			"tags": "",
+			"published": "0",
+			"assetId": "21e1b09"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Boris Anderson",
+			"themeId": "family",
+			"id": "aa61ba3",
+			"share": {
+				"type": "none"
+			},
+			"tags": "",
+			"published": "0",
+			"assetId": "aa61ba3"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Caillou Anderson",
+			"themeId": "family",
+			"id": "c06ecf9",
+			"share": {
+				"type": "none"
+			},
+			"tags": "",
+			"published": "0",
+			"assetId": "c06ecf9"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "kuba flag.png",
+			"ptype": "placeable",
+			"id": "702ea75.png"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Kuba. K",
+			"themeId": "family",
+			"id": "dfd6ef6",
+			"share": {
+				"type": "none"
+			},
+			"tags": "",
+			"published": "0",
+			"assetId": "dfd6ef6"
+		},
+		{
+			"duration": 836,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Mary] hi",
+			"id": "563297f.mp3"
+		},
+		{
+			"duration": 1071,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Sam] hi",
+			"id": "3d78978.mp3"
+		}
+	],
+	"movies": [
+		{
+			"id": "5758b0b",
+			"duration": "00:09",
+			"date": "2023-07-04T16:43:57.610Z",
+			"title": "test",
+			"sceneCount": 1
+		}
+	],
+	"folders": [],
+	"watermarks": []
+}
