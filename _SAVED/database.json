@@ -1,6 +1,20 @@
 {
 	"assets": [
 		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "Deh",
+			"ptype": "placeable",
+			"id": "128e3a4.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "154962011672386513.jpg",
+			"ptype": "placeable",
+			"id": "8b4ec4a.png"
+		},
+		{
 			"duration": 3024,
 			"type": "sound",
 			"subtype": "tts",
