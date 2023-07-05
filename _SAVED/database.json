@@ -3,6 +3,13 @@
 		{
 			"type": "prop",
 			"subtype": "0",
+			"title": "Ekrot_Kaye.png",
+			"ptype": "placeable",
+			"id": "d2ca556.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
 			"title": "Es.png",
 			"ptype": "placeable",
 			"id": "7a053e1.png"
