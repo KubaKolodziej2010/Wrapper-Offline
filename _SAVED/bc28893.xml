@@ -1,0 +1,160 @@
+<film copyable="0" duration="180.0" published="0" pshare="0" isWide="1">
+  <meta>
+    <title><![CDATA[my best friends dance]]></title>
+    <tag><![CDATA[]]></tag>
+    <hiddenTag><![CDATA[]]></hiddenTag>
+    <desc><![CDATA[]]></desc>
+    <mver><![CDATA[4]]></mver>
+    <studio>d7446f28669693f5b7a35d41831e43c3662c48bf</studio>
+    <thumbnail index="0"/>
+    <palette>
+      <color value="333333"/>
+      <color value="999999"/>
+      <color value="fbfbfb"/>
+      <color value="669999"/>
+      <color value="55bbaa"/>
+      <color value="7fbb11"/>
+      <color value="15709b"/>
+      <color value="9a5d1"/>
+      <color value="6ab8d6"/>
+      <color value="da2021"/>
+      <color value="fecd31"/>
+      <color value="28c6c1"/>
+      <color value="37444f"/>
+      <color value="f1fd"/>
+    </palette>
+  </meta>
+  <scene id="SCENE0" adelay="771" lock="Y" index="0" color="61949" guid="E67C8F1C-7FD7-36F5-D43D-855D322AB87C">
+    <char id="AVATOR133" index="1" raceCode="1">
+      <action face="1" motionface="1">ugc.dfd6ef6.stand.xml</action>
+      <x>322.8178945</x>
+      <y>223.7053246</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR134" index="2" raceCode="1">
+      <action face="1" motionface="1">ugc.21e1b09.stand.xml</action>
+      <x>213.354972</x>
+      <y>223.625</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1">
+      <action face="1" motionface="1">ugc.35c7597.stand.xml</action>
+      <x>466.0308169</x>
+      <y>223.65</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR136" index="4" raceCode="1">
+      <action face="1" motionface="1">ugc.d4d0138.stand.xml</action>
+      <x>399.9678945</x>
+      <y>223.775</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <effectAsset id="EFFECT1" themecode="common" index="5">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+  </scene>
+  <scene id="SCENE1" adelay="1869" lock="Y" index="1" color="61949" guid="F08F3371-3B7F-1653-5E99-F88310E9E18D">
+    <char id="AVATOR133" index="1" raceCode="1" faceCamera="true">
+      <action face="1" motionface="1">ugc.dfd6ef6.dance.xml</action>
+      <x>314.9678945</x>
+      <y>223.725</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR134" index="2" raceCode="1" faceCamera="true">
+      <action face="1" motionface="1">ugc.21e1b09.dance.xml</action>
+      <x>213.354972</x>
+      <y>223.625</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1" faceCamera="true">
+      <action face="1" motionface="1">ugc.35c7597.dance.xml</action>
+      <x>476.2808169</x>
+      <y>223.65</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR136" index="4" raceCode="1" faceCamera="true">
+      <action face="1" motionface="1">ugc.d4d0138.dance.xml</action>
+      <x>399.9678945</x>
+      <y>223.775</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <effectAsset id="EFFECT1" themecode="common" index="5">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+  </scene>
+  <scene id="SCENE2" adelay="1680" lock="Y" index="2" color="61949" guid="65A8C699-B3F6-3FCE-C45B-97B5896A66CF">
+    <char id="AVATOR133" index="1" raceCode="1" faceCamera="true">
+      <action face="1" motionface="1">ugc.dfd6ef6.dance.xml</action>
+      <x>314.9678945</x>
+      <y>223.725</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR134" index="2" raceCode="1" faceCamera="true">
+      <action face="1" motionface="1">ugc.21e1b09.dance.xml</action>
+      <x>213.354972</x>
+      <y>223.625</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1" faceCamera="true">
+      <action face="1" motionface="1">ugc.35c7597.dance.xml</action>
+      <x>476.2808169</x>
+      <y>223.65</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR136" index="4" raceCode="1" faceCamera="true">
+      <action face="1" motionface="1">ugc.d4d0138.dance.xml</action>
+      <x>399.9678945</x>
+      <y>223.775</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <effectAsset id="EFFECT1" themecode="common" index="5">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+  </scene>
+  <sound id="SOUND0" index="0" track="0" vol="1" tts="0">
+    <sfile>ugc.f05116b.mp3</sfile>
+    <start>1</start>
+    <stop>4320</stop>
+    <fadein duration="0" vol="0"/>
+    <fadeout duration="0" vol="0"/>
+  </sound>
+</film>
