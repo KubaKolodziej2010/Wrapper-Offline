@@ -1,6 +1,73 @@
 {
 	"assets": [
 		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "misc_rybka2019.png",
+			"ptype": "placeable",
+			"id": "6766926.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "MiniMini+_Logo_2014.png",
+			"ptype": "placeable",
+			"id": "cd43bd6.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "379461706_694356232120363_4597736338074202657_n.jpg",
+			"ptype": "placeable",
+			"id": "9ea0bed.jpg"
+		},
+		{
+			"type": "bg",
+			"subtype": "0",
+			"title": "377322184_1449848245584265_9000029472727568377_n.jpg",
+			"id": "e3a3332.jpg"
+		},
+		{
+			"type": "bg",
+			"subtype": "0",
+			"title": "377413598_235506952437841_2462606790750752087_n.jpg",
+			"id": "177ceb8.jpg"
+		},
+		{
+			"type": "bg",
+			"subtype": "0",
+			"title": "378140925_1411263019604249_1307310108140584512_n.jpg",
+			"id": "635ff01.jpg"
+		},
+		{
+			"duration": 6348,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Rod] This is a Test Of The Acapela voices Working In Wrapper Offline",
+			"id": "24d2d89.mp3"
+		},
+		{
+			"duration": 3657,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Rod] test",
+			"id": "f05a8cb.mp3"
+		},
+		{
+			"duration": 3631,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Rod (Neural)] test",
+			"id": "9eb840e.mp3"
+		},
+		{
+			"duration": 720,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Julie (Old)] test",
+			"id": "31f6c3b.mp3"
+		},
+		{
 			"type": "sound",
 			"subtype": "bgmusic",
 			"title": "tomp3.cc - IShowSpeed  Portuginies  Official Music Video Prod Dj Scheme.mp3",
