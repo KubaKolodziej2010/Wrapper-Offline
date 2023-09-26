@@ -1,6 +1,46 @@
 {
 	"assets": [
 		{
+			"type": "bg",
+			"subtype": "0",
+			"title": "153725_r0_940.jpg",
+			"id": "9a02700.jpg"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "EDM Detection Mode - Kevin MacLeod.mp3",
+			"duration": 365740,
+			"id": "b252692.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "soundeffect",
+			"title": "tomp3.cc - Spongebob sound efect suspense.mp3",
+			"duration": 5120,
+			"id": "d68f942.mp3"
+		},
+		{
+			"type": "bg",
+			"subtype": "0",
+			"title": "WAYNE NATHANIEL FLAG",
+			"id": "f0af4c0.jpg"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "3630332"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "c1649ed"
+		},
+		{
 			"type": "prop",
 			"subtype": "0",
 			"title": "misc_rybka2019.png",
@@ -511,6 +551,14 @@
 		}
 	],
 	"movies": [
+		{
+			"id": "2a947a9",
+			"duration": "00:02",
+			"date": "2023-09-26T15:34:04.518Z",
+			"title": "Welcome Back",
+			"sceneCount": 1,
+			"watermark": "0vTLbQy9hG7k"
+		},
 		{
 			"id": "bc28893",
 			"duration": "03:00",
