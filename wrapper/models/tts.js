@@ -156,13 +156,13 @@ module.exports = function processVoice(voiceName, rawText) {
 								const html = Buffer.concat(buffers);
 								const beg = html.indexOf("/tmp/");
 								const end = html.indexOf("mp3", beg) + 3;
-								const path = html.subarray(beg, end).toString();
+								const sub = html.subarray(beg, end).toString();
 								//console.log(html.toString());
 
 								https
 									.get({
 										hostname: "101.99.94.14",	
-										path: `/${path}`,
+										path: `/${sub}`,
 										headers: {
 											Host: "gonutts.net"
 										}
@@ -184,37 +184,31 @@ module.exports = function processVoice(voiceName, rawText) {
 				}
  				case "pollyold2": {
 					const req = https.request(
+                      {
+						hostname: "support.readaloud.app",
+						path: "/ttstool/createParts",
+						method: "POST",
+						headers: {
+								"Content-Type": "application/json",
+						},
+					}, (r) => {
+						let buffers = [];
+						r.on("data", (d) => buffers.push(d)).on("error", rej).on("end", () => {
+							https.get({
+								hostname: "support.readaloud.app",
+								path: `/ttstool/getParts?q=${JSON.parse(Buffer.concat(buffers))[0]}`,
+								headers: {
+									"Content-Type": "audio/mp3"
+								}
+							}, res).on("error", rej);
+						});
+					}).end(JSON.stringify([
 						{
-                                        hostname: "support.readaloud.app",
-                                        path: "/ttstool/createParts",
-                                        method: "POST",
-                                        headers: {
-                                                "Content-Type": "application/json",
-                                        },
-                                }, (r) => {
-                                        let buffers = [];
-                                        r.on("data", (d) => buffers.push(d)).on("error", rej).on("end", () => {
-                                                https.get({
-                                                        hostname: "support.readaloud.app",
-							path: `/ttstool/getParts?q=${JSON.parse(Buffer.concat(buffers))[0]}`,
-							headers: {
-                                                                "Content-Type": "audio/mp3"
-                                                        }
-						}, (r) => {
-							let buffers = [];
-							r
-                                                                .on("data", (b) => buffers.push(b))
-                                                                .on("end", () => res(Buffer.concat(buffers)))
-                                                                .on("error", rej);
-                                                }).on("error", rej);
-                                        });
-                                }).end(JSON.stringify([
-                                        {
-                                                voiceId: voice.arg,
-                                                ssml: `<speak version="1.0" xml:lang="${voice.lang}">${text}</speak>`
-                                        }
-                                ])).on("error", rej);
-                     break;
+							voiceId: voice.arg,
+							ssml: `<speak version="1.0" xml:lang="${voice.lang}">${text}</speak>`
+						}
+					])).on("error", rej);
+					break;
 				}
 				case "vocalware": {
 					const [EID, LID, VID] = voice.arg;
@@ -288,70 +282,38 @@ module.exports = function processVoice(voiceName, rawText) {
 					break;
 				}
 				case "acapela": {
-					let acapelaArray = [];
-					for (let c = 0; c < 15; c++) acapelaArray.push(~~(65 + Math.random() * 26));
-					const email = `${String.fromCharCode.apply(null, acapelaArray)}@gmail.com`;
-
-					let req = https.request(
+					const req = https.request(
 						{
-							hostname: "acapelavoices.acapela-group.com",
-							path: "/index/getnonce",
+							hostname: "lazypy.ro",
+							path: "/tts/request_tts.php",
 							method: "POST",
 							headers: {
-								"Content-Type": "application/x-www-form-urlencoded",
-							},
+								"Content-type": "application/x-www-form-urlencoded"
+							}
 						},
 						(r) => {
-							let buffers = [];
-							r.on("data", (b) => buffers.push(b));
+							let body = "";
+							r.on("data", (b) => body += b);
 							r.on("end", () => {
-								const nonce = JSON.parse(Buffer.concat(buffers)).nonce;
-								let req = https.request(
-									{
-										hostname: "acapela-group.com",
-										port: "8443",
-										path: "/Services/Synthesizer",
-										method: "POST",
-										headers: {
-											"Content-Type": "application/x-www-form-urlencoded",
-										},
-									},
-									(r) => {
-										let buffers = [];
-										r.on("data", (d) => buffers.push(d));
-										r.on("end", () => {
-											const html = Buffer.concat(buffers);
-											const beg = html.indexOf("&snd_url=") + 9;
-											const end = html.indexOf("&", beg);
-											const sub = html.subarray(beg, end).toString();
+								const json = JSON.parse(body);
+								console.log(JSON.stringify(json, undefined, 2))
+								if (json.success !== true) {
+									return rej(json.error_msg);
+								}
 
-											https
-												.get(sub, res)
-												.on("error", rej);
-										});
-										r.on("error", rej);
-									}
-								).on("error", rej);
-								req.end(
-									new URLSearchParams({
-										req_voice: voice.arg,
-										cl_pwd: "",
-										cl_vers: "1-30",
-										req_echo: "ON",
-										cl_login: "AcapelaGroup",
-										req_comment: `{"nonce":"${nonce}","user":"${email}"}`,
-										req_text: text,
-										cl_env: "ACAPELA_VOICES",
-										prot_vers: 2,
-										cl_app: "AcapelaGroup_WebDemo_Android",
-									}).toString()
-								);
+								https.get(json.audio_url, (r) => {
+								res(r);
+								});							
 							});
+							r.on("error", rej);
 						}
+						
 					).on("error", rej);
 					req.end(
 						new URLSearchParams({
-							json: `{"googleid":"${email}"`,
+							text: text,
+							voice: voice.arg,
+							service: "Acapela",
 						}).toString()
 					);
 					break;
@@ -382,6 +344,22 @@ module.exports = function processVoice(voiceName, rawText) {
 						.on("error", rej);
 					break;
 				}
+ 				case "cobaltspeech": {
+					const q = new URLSearchParams({
+						"text.text": text,
+						"config.model_id": voice.lang,
+						"config.speaker_id": voice.arg,
+					    "config.speech_rate": 1,
+						"config.variation_scale": 0,
+						"config.audio_format.codec": "AUDIO_CODEC_WAV"
+					}).toString();
+
+					https.get({
+						hostname: "demo.cobaltspeech.com",
+						path: `/voicegen/api/v1/synthesize?${q}`,
+					}, (r) => fileUtil.convertToMp3(r, "wav").then(res).catch(rej)).on("error", rej);
+					break;
+				}
  				case "sapi4": {
 					const q = new URLSearchParams({
 						text,
@@ -396,37 +374,31 @@ module.exports = function processVoice(voiceName, rawText) {
 				}
  				case "onecore": {
 					const req = https.request(
+                      {
+						hostname: "support.readaloud.app",
+						path: "/ttstool/createParts",
+						method: "POST",
+						headers: {
+								"Content-Type": "application/json",
+						},
+					}, (r) => {
+						let buffers = [];
+						r.on("data", (d) => buffers.push(d)).on("error", rej).on("end", () => {
+							https.get({
+								hostname: "support.readaloud.app",
+								path: `/ttstool/getParts?q=${JSON.parse(Buffer.concat(buffers))[0]}`,
+								headers: {
+									"Content-Type": "audio/mp3"
+								}
+							}, res).on("error", rej);
+						});
+					}).end(JSON.stringify([
 						{
-                                        hostname: "support.readaloud.app",
-                                        path: "/ttstool/createParts",
-                                        method: "POST",
-                                        headers: {
-                                                "Content-Type": "application/json",
-                                        },
-                                }, (r) => {
-                                        let buffers = [];
-                                        r.on("data", (d) => buffers.push(d)).on("error", rej).on("end", () => {
-                                                https.get({
-                                                        hostname: "support.readaloud.app",
-							path: `/ttstool/getParts?q=${JSON.parse(Buffer.concat(buffers))[0]}`,
-							headers: {
-                                                                "Content-Type": "audio/mp3"
-                                                        }
-						}, (r) => {
-							let buffers = [];
-							r
-                                                                .on("data", (b) => buffers.push(b))
-                                                                .on("end", () => res(Buffer.concat(buffers)))
-                                                                .on("error", rej);
-                                                }).on("error", rej);
-                                        });
-                                }).end(JSON.stringify([
-                                        {
-                                                voiceId: voice.arg,
-                                                ssml: `<speak version="1.0" xml:lang="${voice.lang}">${text}</speak>`
-                                        }
-                                ])).on("error", rej);
-                     break;
+							voiceId: voice.arg,
+							ssml: `<speak version="1.0" xml:lang="${voice.lang}">${text}</speak>`
+						}
+					])).on("error", rej);
+					break;
 				}
 				case "onecore2": {
 					const q = new URLSearchParams({
@@ -438,19 +410,32 @@ module.exports = function processVoice(voiceName, rawText) {
 					}).toString();
 
 					https
-						.get(`https://api.voicerss.org/?key=c52b84f130c244eab434bce9ac66cba2&${q}`, res)
+						.get(`https://api.voicerss.org/?key=83baa990727f47a89160431e874a8823&${q}`, res)
 						.on("error", rej);
 					break;
 				}
 				case "svox": {
 					const q = new URLSearchParams({
-						apikey: "e3a4477c01b482ea5acc6ed03b1f419f",
-						action: "convert",
-						format: "mp3",
-						voice: voice.arg,
 						speed: 0,
+						apikey: "ispeech-listenbutton-betauserkey",
 						text: text,
-						version: "0.2.99",
+						action: "convert",
+						voice: voice.arg,
+						format: "mp3",
+						e: "audio.mp3"
+					}).toString();
+
+					https
+						.get(`https://api.ispeech.org/api/rest?${q}`, res)
+						.on("error", rej);
+					break;
+				}
+				case "neospeechold": {
+					const q = new URLSearchParams({
+						apikey: "38fcab81215eb701f711df929b793a89",
+						action: "convert",
+						voice: voice.arg,
+						text: text,
 					}).toString();
 
 					https
@@ -467,6 +452,80 @@ module.exports = function processVoice(voiceName, rawText) {
 					https
 						.get(`https://voicedemo.codefactoryglobal.com/generate_audio.asp?${q}`, res)
 						.on("error", rej);
+					break;
+				}
+				case "watson": {
+					const req = https.request(
+						{
+							hostname: "lazypy.ro",
+							path: "/tts/request_tts.php",
+							method: "POST",
+							headers: {
+								"Content-type": "application/x-www-form-urlencoded"
+							}
+						},
+						(r) => {
+							let body = "";
+							r.on("data", (b) => body += b);
+							r.on("end", () => {
+								const json = JSON.parse(body);
+								console.log(JSON.stringify(json, undefined, 2))
+								if (json.success !== true) {
+									return rej(json.error_msg);
+								}
+
+								https.get(json.audio_url, (r) => {
+								res(r);
+								});							
+							});
+							r.on("error", rej);
+						}
+						
+					).on("error", rej);
+					req.end(
+						new URLSearchParams({
+							text: text,
+							voice: voice.arg,
+							service: "IBM Watson",
+						}).toString()
+					);
+					break;
+				}
+				case "azure": {
+					const req = https.request(
+						{
+							hostname: "lazypy.ro",
+							path: "/tts/request_tts.php",
+							method: "POST",
+							headers: {
+								"Content-type": "application/x-www-form-urlencoded"
+							}
+						},
+						(r) => {
+							let body = "";
+							r.on("data", (b) => body += b);
+							r.on("end", () => {
+								const json = JSON.parse(body);
+								console.log(JSON.stringify(json, undefined, 2))
+								if (json.success !== true) {
+									return rej(json.error_msg);
+								}
+
+								https.get(json.audio_url, (r) => {
+								res(r);
+								});							
+							});
+							r.on("error", rej);
+						}
+						
+					).on("error", rej);
+					req.end(
+						new URLSearchParams({
+							text: text,
+							voice: voice.arg,
+							service: "Bing Translator",
+						}).toString()
+					);
 					break;
 				}
 				case "tiktok": {
