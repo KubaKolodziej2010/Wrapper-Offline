@@ -1,6 +1,13 @@
 {
 	"assets": [
 		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "a2b4e0a"
+		},
+		{
 			"type": "bg",
 			"subtype": "0",
 			"title": "702ea75.png",
