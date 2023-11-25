@@ -1,6 +1,41 @@
 {
 	"assets": [
 		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "dfqqpdn-a0bddf52-7eab-4fdf-8173-e72b5fbf517e.jpg",
+			"ptype": "placeable",
+			"id": "f4b08b2.jpg"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "eee__superform_by_tracymedders_dft0y3i-pre.jpg",
+			"ptype": "placeable",
+			"id": "e9a1844.jpg"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "blood-png-17.png",
+			"ptype": "placeable",
+			"id": "884ac7d.png"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "(m=eGNdHgaaaa)(mh=EaPDFNZAt5vbnMMP)8.jpg",
+			"ptype": "placeable",
+			"id": "44f7816.jpg"
+		},
+		{
+			"type": "prop",
+			"subtype": "0",
+			"title": "arte-de-canal-do-youtube-playlist-10_01DDGXEPFJ1HXGJYXQMCB11RR0.1680x0.jpg",
+			"ptype": "placeable",
+			"id": "21d10f8.jpg"
+		},
+		{
 			"type": "char",
 			"subtype": 0,
 			"title": "Untitled",
