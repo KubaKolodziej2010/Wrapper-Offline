@@ -1,6 +1,34 @@
 {
 	"assets": [
 		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "4b69bc5"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "3582f3f"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "57a22e7"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "9dd2390"
+		},
+		{
 			"type": "prop",
 			"subtype": "0",
 			"title": "dfqqpdn-a0bddf52-7eab-4fdf-8173-e72b5fbf517e.jpg",
