@@ -220,31 +220,12 @@ module.exports = function processVoice(voiceName, rawText) {
 						EXT: "mp3",
 						FNAME: "",
 						ACC: 15679,
-						SceneID: 2703396,
+						SceneID: 2646118,
 						HTTP_ERR: "",
 					}).toString();
 
-					console.log(`https://cache-a.oddcast.com/tts/genB.php?${q}`)
 					https
-						.get(
-							{
-								hostname: "cache-a.oddcast.com",
-								path: `/tts/genB.php?${q}`,
-								headers: {
-									"Host": "cache-a.oddcast.com",
-									"Accept": "*/*",
-									"Accept-Language": "en-US,en;q=0.5",
-									"Accept-Encoding": "gzip, deflate, br",
-									"Origin": "https://www.oddcast.com",
-									"DNT": 1,
-									"Connection": "keep-alive",
-									"Referer": "https://www.oddcast.com/",
-									"Sec-Fetch-Dest": "empty",
-									"Sec-Fetch-Mode": "cors",
-									"Sec-Fetch-Site": "same-site"
-								}
-							}, res
-						)
+						.get(`https://cache-a.oddcast.com/tts/genB.php?${q}`, res)
 						.on("error", rej);
 					break;
 				}
@@ -260,7 +241,7 @@ module.exports = function processVoice(voiceName, rawText) {
 								origin: "https://www.cereproc.com",
 								referer: "https://www.cereproc.com/en/products/voices",
 								"x-requested-with": "XMLHttpRequest",
-								cookie: "Drupal.visitor.liveDemo=666",
+								cookie: "Drupal.visitor.liveDemoCookie=666",
 							},
 						},
 						(r) => {
@@ -315,6 +296,96 @@ module.exports = function processVoice(voiceName, rawText) {
 							voice: voice.arg,
 							service: "Acapela",
 						}).toString()
+					);
+					break;
+				}
+				case "acapela2": {
+					let acapelaArray = [];
+					for (let c = 0; c < 15; c++) acapelaArray.push(~~(65 + Math.random() * 26));
+					const email = `${String.fromCharCode.apply(null, acapelaArray)}@gmail.com`;
+
+					let req = https.request(
+						{
+							hostname: "acapelavoices.acapela-group.com",
+							path: "/index/getnonce",
+							method: "POST",
+							headers: {
+								"Content-Type": "application/x-www-form-urlencoded",
+							},
+						},
+						(r) => {
+							let buffers = [];
+							r.on("data", (b) => buffers.push(b));
+							r.on("end", () => {
+								const nonce = JSON.parse(Buffer.concat(buffers)).nonce;
+								let req = https.request(
+									{
+										hostname: "acapela-group.com",
+										port: "8443",
+										path: "/Services/Synthesizer",
+										method: "POST",
+										headers: {
+											"Content-Type": "application/x-www-form-urlencoded",
+										},
+									},
+									(r) => {
+										let buffers = [];
+										r.on("data", (d) => buffers.push(d));
+										r.on("end", () => {
+											const html = Buffer.concat(buffers);
+											const beg = html.indexOf("&snd_url=") + 9;
+											const end = html.indexOf("&", beg);
+											const sub = html.subarray(beg, end).toString();
+
+											https
+												.get(sub, res)
+												.on("error", rej);
+										});
+										r.on("error", rej);
+									}
+								).on("error", rej);
+								req.end(
+									new URLSearchParams({
+										cl_vers: "1-30",
+										req_text: text,
+										cl_login: "AcapelaGroup",
+										cl_app: "AcapelaGroup_WebDemo_Android",
+										req_comment: `{"nonce":"${nonce}","user":"${email}"}`,
+										prot_vers: 2,
+										cl_env: "ACAPELA_VOICES",
+										cl_pwd: "",
+										req_voice: voice.arg,
+										req_echo: "ON",
+									}).toString()
+								);
+							});
+						}
+					).on("error", rej);
+					req.end(
+						new URLSearchParams({
+							json: `{"googleid":"${email}"`,
+						}).toString()
+					);
+					break;
+				}
+				case "acapela3": {
+					var q = new URLSearchParams({
+						voiceSpeed: 100,
+						inputText: Buffer.from(text,'utf8').toString('base64'),
+					}).toString();
+					https.get(
+						{
+							host: "voice.reverso.net",
+							path: `/RestPronunciation.svc/v1/output=json/GetVoiceStream/voiceName=${voice.arg}?${q}`,
+							headers: {
+							'Host':'voice.reverso.net',
+							'Referer':'voice.reverso.net',
+							'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/6.0',
+							'Connection':'Keep-Alive'
+							}
+						},
+						(r) => { res(r)
+						}
 					);
 					break;
 				}
@@ -432,10 +503,13 @@ module.exports = function processVoice(voiceName, rawText) {
 				}
 				case "neospeechold": {
 					const q = new URLSearchParams({
+						speed: 0,
 						apikey: "38fcab81215eb701f711df929b793a89",
+						text: text,
 						action: "convert",
 						voice: voice.arg,
-						text: text,
+						format: "mp3",
+						e: "audio.mp3"
 					}).toString();
 
 					https
@@ -526,6 +600,56 @@ module.exports = function processVoice(voiceName, rawText) {
 							service: "Bing Translator",
 						}).toString()
 					);
+					break;
+				}
+				case "youdao": {
+					const q = new URLSearchParams({
+						audio: text,
+						le: voice.arg,
+						type: voice.type
+					}).toString();
+
+					https
+						.get(`https://dict.youdao.com/dictvoice?${q}`, res)
+						.on("error", rej);
+					break;
+				}
+				case "baidu": {
+					const q = new URLSearchParams({
+						lan: voice.arg,
+						text: text,
+						spd: "5",
+						source: "web",
+					}).toString();
+
+					https
+						.get(`https://fanyi.baidu.com/gettts?${q}`, res)
+						.on("error", rej);
+					break;
+				}
+				case "elevenlabs": {
+					const req = https.request(
+						{
+							hostname: "api.elevenlabs.io",
+							path: "/v1/text-to-speech/" + voice.arg + "/stream",
+							method: "POST",
+							headers: {
+								"Content-type": "application/json",
+								"xi-api-key": "a08c21d2e286e4af4f93064ad73d6861"
+							}
+						},
+						(r) => {
+							let buffers = [];
+							r
+								.on("data", (b) => buffers.push(b))
+								.on("end", () => res(Buffer.concat(buffers)))
+								.on("error", rej);
+						}
+					).on("error", rej);
+					req.end(JSON.stringify({
+						text: text,
+						model_id: "eleven_monolingual_v1"
+					}));
 					break;
 				}
 				case "tiktok": {
