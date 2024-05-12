@@ -1,6 +1,13 @@
 {
 	"assets": [
 		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "dc7e81b"
+		},
+		{
 			"type": "sound",
 			"subtype": "bgmusic",
 			"title": "Rainy Day Games - The Green Orbs.mp3",
