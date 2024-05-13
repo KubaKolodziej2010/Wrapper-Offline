@@ -1,0 +1,530 @@
+<film copyable="0" duration="29.8" published="1" pshare="0" isWide="1">
+  <meta>
+    <title><![CDATA[I Beat Up Red Kuba Because It's Age Restricted My ]]></title>
+    <tag><![CDATA[]]></tag>
+    <hiddenTag><![CDATA[]]></hiddenTag>
+    <desc><![CDATA[HAHA!!!!! This is What You Get!!!!! >:D]]></desc>
+    <mver><![CDATA[4]]></mver>
+    <studio>d7446f28669693f5b7a35d41831e43c3662c48bf</studio>
+    <thumbnail index="0"/>
+    <palette>
+      <color value="333333"/>
+      <color value="999999"/>
+      <color value="fbfbfb"/>
+      <color value="669999"/>
+      <color value="55bbaa"/>
+      <color value="7fbb11"/>
+      <color value="15709b"/>
+      <color value="9a5d1"/>
+      <color value="6ab8d6"/>
+      <color value="da2021"/>
+      <color value="fecd31"/>
+      <color value="28c6c1"/>
+      <color value="37444f"/>
+      <color value="0"/>
+    </palette>
+  </meta>
+  <scene id="SCENE0" adelay="66" lock="N" index="0" color="16777215" guid="E13ACE4C-C41B-33F7-4807-A9A0945C51DC">
+    <durationSetting countMinimum="1" countTransition="1" countAction="1" countBubble="1" countSpeech="1"/>
+    <char id="AVATOR131" index="1" raceCode="1">
+      <action face="-1" motionface="1">ugc.c5ebcee.stand.xml</action>
+      <head id="PROP35" raceCode="1">
+        <file>ugc.c5ebcee.head.head_shocked.xml</file>
+      </head>
+      <x>123.9</x>
+      <y>227.05</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR132" index="2" raceCode="1">
+      <action face="1" motionface="1">ugc.3b53c0a.stand.xml</action>
+      <head id="PROP37" raceCode="1">
+        <file>ugc.3b53c0a.head.head_angry.xml</file>
+      </head>
+      <x>513.55</x>
+      <y>227.025</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1">
+      <action face="1" motionface="1">ugc.d244f32.stand.xml</action>
+      <head id="PROP43" raceCode="1">
+        <file>ugc.d244f32.head.head_angry.xml</file>
+      </head>
+      <x>422.75</x>
+      <y>233</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR138" index="4" raceCode="1">
+      <action face="1" motionface="1">ugc.eaabd92.stand.xml</action>
+      <head id="PROP38" raceCode="1">
+        <file>ugc.eaabd92.head.head_angry.xml</file>
+      </head>
+      <x>328.5</x>
+      <y>233.025</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <effectAsset id="EFFECT1" themecode="common" index="5">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+  </scene>
+  <scene id="SCENE1" adelay="174" lock="N" index="1" color="16777215" guid="A8E35218-6A32-DCB2-E761-A83428FADEDB">
+    <durationSetting countMinimum="1" countTransition="1" countAction="1" countBubble="1" countSpeech="1"/>
+    <char id="AVATOR131" index="1" raceCode="1">
+      <action face="-1" motionface="1">ugc.c5ebcee.stand.xml</action>
+      <head id="PROP36" raceCode="1">
+        <file>ugc.c5ebcee.head.head_cry.xml</file>
+      </head>
+      <x>123.9</x>
+      <y>227.05</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR132" index="2" raceCode="1">
+      <action face="1,1" motionface="1">ugc.3b53c0a.run.xml</action>
+      <head id="PROP45" raceCode="1">
+        <file>ugc.3b53c0a.head.head_angry.xml</file>
+      </head>
+      <x>513.55,142.8</x>
+      <y>227.025,229.6</y>
+      <xscale>1,1</xscale>
+      <yscale>1,1</yscale>
+      <rotation>0,0</rotation>
+      <assetMotion ver="2"/>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1">
+      <action face="1,1" motionface="1">ugc.d244f32.run.xml</action>
+      <head id="PROP49" raceCode="1">
+        <file>ugc.d244f32.head.head_angry.xml</file>
+      </head>
+      <x>422.75,131.6</x>
+      <y>233,230.325</y>
+      <xscale>1,1</xscale>
+      <yscale>1,1</yscale>
+      <rotation>0,0</rotation>
+      <assetMotion ver="2"/>
+    </char>
+    <char id="AVATOR138" index="4" raceCode="1">
+      <action face="1,1" motionface="1">ugc.eaabd92.run.xml</action>
+      <head id="PROP47" raceCode="1">
+        <file>ugc.eaabd92.head.head_angry.xml</file>
+      </head>
+      <x>328.5,126.6</x>
+      <y>233.025,230.55</y>
+      <xscale>1,1</xscale>
+      <yscale>1,1</yscale>
+      <rotation>0,0</rotation>
+      <assetMotion ver="2"/>
+    </char>
+    <effectAsset id="EFFECT1" themecode="common" index="5">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+    <aTranList>
+      <aTran id="0" target="AVATOR138" type="MotionPath" atype="Character" direction="2" section="6" timing="3" duration="24" delay="0">null</aTran>
+      <aTran id="1" target="AVATOR135" type="MotionPath" atype="Character" direction="2" section="6" timing="3" duration="24" delay="0">null</aTran>
+      <aTran id="2" target="AVATOR132" type="MotionPath" atype="Character" direction="2" section="6" timing="3" duration="24" delay="0">null</aTran>
+    </aTranList>
+  </scene>
+  <scene id="SCENE2" adelay="312" lock="Y" index="2" color="16777215" guid="CD48B96F-5E01-FBCC-4E66-FC7446134CE0">
+    <char id="AVATOR131" index="1" raceCode="1">
+      <action face="-1" motionface="1">ugc.c5ebcee.stand.xml</action>
+      <head id="PROP20" raceCode="1">
+        <file>ugc.c5ebcee.head.head_cry.xml</file>
+      </head>
+      <x>123.9</x>
+      <y>227.05</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR132" index="2" raceCode="1">
+      <action face="1" motionface="1">ugc.3b53c0a.stand.xml</action>
+      <head id="PROP21" raceCode="1">
+        <file>ugc.3b53c0a.head.head_angry.xml</file>
+      </head>
+      <x>142.8</x>
+      <y>229.6</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1">
+      <action face="1" motionface="1">ugc.d244f32.stand.xml</action>
+      <head id="PROP24" raceCode="1">
+        <file>ugc.d244f32.head.head_angry.xml</file>
+      </head>
+      <x>131.6</x>
+      <y>230.325</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR138" index="4" raceCode="1">
+      <action face="1" motionface="1">ugc.eaabd92.stand.xml</action>
+      <head id="PROP27" raceCode="1">
+        <file>ugc.eaabd92.head.head_angry.xml</file>
+      </head>
+      <x>126.6</x>
+      <y>230.55</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <prop id="PROP30" index="5">
+      <file>custom.cc_mosaic.swf</file>
+      <x>147.1</x>
+      <y>211.225</y>
+      <xscale>8.414853</xscale>
+      <yscale>8.414853</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+    </prop>
+    <effectAsset id="EFFECT4" themecode="common" index="6">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="earthquake" type="EARTHQUAKE"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+    <effectAsset id="EFFECT1" themecode="common" index="7">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+  </scene>
+  <scene id="SCENE3" adelay="48" lock="Y" index="3" color="16777215" guid="A2A9C619-8C3E-716A-5969-7B5BB18AD2DF">
+    <char id="AVATOR131" index="1" raceCode="1">
+      <action face="-1" motionface="1">ugc.4a983cc.stand.xml</action>
+      <head id="PROP54" raceCode="1">
+        <file>ugc.4a983cc.head.head_asleep.xml</file>
+      </head>
+      <x>156.3562889</x>
+      <y>308.366168</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>-91.7315205</rotation>
+    </char>
+    <char id="AVATOR132" index="2" raceCode="1">
+      <action face="1" motionface="1">ugc.3b53c0a.stand.xml</action>
+      <head id="PROP32" raceCode="1">
+        <file>ugc.3b53c0a.head.head_angry.xml</file>
+      </head>
+      <x>322.275</x>
+      <y>241.05</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1">
+      <action face="1" motionface="1">ugc.d244f32.stand.xml</action>
+      <head id="PROP33" raceCode="1">
+        <file>ugc.d244f32.head.head_angry.xml</file>
+      </head>
+      <x>467.5</x>
+      <y>236.55</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR138" index="4" raceCode="1">
+      <action face="1" motionface="1">ugc.eaabd92.stand.xml</action>
+      <head id="PROP34" raceCode="1">
+        <file>ugc.eaabd92.head.head_angry.xml</file>
+      </head>
+      <x>400.95</x>
+      <y>236.6</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <prop id="PROP40" index="5">
+      <file>common.nccha_blood01.swf</file>
+      <x>180.25</x>
+      <y>309.4</y>
+      <xscale>2.4024885</xscale>
+      <yscale>2.4024885</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+    </prop>
+    <prop id="PROP41" index="6">
+      <file>common.nccha_blood02.swf</file>
+      <x>117.5436132</x>
+      <y>321.680884</y>
+      <xscale>1.3722637</xscale>
+      <yscale>4.2353617</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+      <color r="ccColorA">14295073</color>
+    </prop>
+    <prop id="PROP42" index="7">
+      <file>ugc.884ac7d.png</file>
+      <x>163.25</x>
+      <y>300.525</y>
+      <xscale>0.3731907</xscale>
+      <yscale>0.3731907</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+    </prop>
+    <effectAsset id="EFFECT1" themecode="common" index="8">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+  </scene>
+  <scene id="SCENE4" adelay="63" lock="N" index="4" color="16777215" guid="ECB36FE1-EA66-845D-7B7A-0652C36899D5">
+    <durationSetting countMinimum="1" countTransition="1" countAction="1" countBubble="1" countSpeech="1"/>
+    <char id="AVATOR131" index="1" raceCode="1">
+      <action face="-1" motionface="1">ugc.4a983cc.stand.xml</action>
+      <head id="PROP50" raceCode="1">
+        <file>ugc.4a983cc.head.head_asleep.xml</file>
+      </head>
+      <x>156.3562889</x>
+      <y>308.366168</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>-91.7315205</rotation>
+    </char>
+    <char id="AVATOR132" index="2" raceCode="1">
+      <action face="-1,-1" motionface="-1">ugc.3b53c0a.walk.xml</action>
+      <head id="PROP61" raceCode="1">
+        <file>ugc.3b53c0a.head.head_angry.xml</file>
+      </head>
+      <x>322.275,685.775</x>
+      <y>241.05,247.1</y>
+      <xscale>1,1</xscale>
+      <yscale>1,1</yscale>
+      <rotation>0,0</rotation>
+      <assetMotion ver="2"/>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1">
+      <action face="-1,-1" motionface="-1">ugc.d244f32.walk.xml</action>
+      <head id="PROP65" raceCode="1">
+        <file>ugc.d244f32.head.head_angry.xml</file>
+      </head>
+      <x>467.5,717</x>
+      <y>236.55,231.3</y>
+      <xscale>1,1</xscale>
+      <yscale>1,1</yscale>
+      <rotation>0,0</rotation>
+      <assetMotion ver="2"/>
+    </char>
+    <char id="AVATOR138" index="4" raceCode="1">
+      <action face="-1,-1" motionface="-1">ugc.eaabd92.walk.xml</action>
+      <head id="PROP63" raceCode="1">
+        <file>ugc.eaabd92.head.head_angry.xml</file>
+      </head>
+      <x>400.95,711.25</x>
+      <y>236.6,236.325</y>
+      <xscale>1,1</xscale>
+      <yscale>1,1</yscale>
+      <rotation>0,0</rotation>
+      <assetMotion ver="2"/>
+    </char>
+    <prop id="PROP40" index="5">
+      <file>common.nccha_blood01.swf</file>
+      <x>180.25</x>
+      <y>309.4</y>
+      <xscale>2.4024885</xscale>
+      <yscale>2.4024885</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+    </prop>
+    <prop id="PROP41" index="6">
+      <file>common.nccha_blood02.swf</file>
+      <x>117.5436132</x>
+      <y>321.680884</y>
+      <xscale>1.3722637</xscale>
+      <yscale>4.2353617</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+      <color r="ccColorA">14295073</color>
+    </prop>
+    <prop id="PROP42" index="7">
+      <file>ugc.884ac7d.png</file>
+      <x>163.25</x>
+      <y>300.525</y>
+      <xscale>0.3731907</xscale>
+      <yscale>0.3731907</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+    </prop>
+    <effectAsset id="EFFECT1" themecode="common" index="8">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+    <aTranList>
+      <aTran id="3" target="AVATOR132" type="MotionPath" atype="Character" direction="2" section="6" timing="3" duration="24" delay="0">null</aTran>
+      <aTran id="4" target="AVATOR138" type="MotionPath" atype="Character" direction="2" section="6" timing="3" duration="24" delay="0">null</aTran>
+      <aTran id="5" target="AVATOR135" type="MotionPath" atype="Character" direction="2" section="6" timing="3" duration="24" delay="0">null</aTran>
+    </aTranList>
+  </scene>
+  <scene id="SCENE5" adelay="51" lock="Y" index="5" color="16777215" guid="ED81EA9F-914D-64E2-98B6-B646776697C0">
+    <char id="AVATOR131" index="1" raceCode="1">
+      <action face="-1" motionface="1">ugc.4a983cc.stand.xml</action>
+      <head id="PROP55" raceCode="1">
+        <file>ugc.4a983cc.head.head_asleep.xml</file>
+      </head>
+      <x>156.3562889</x>
+      <y>308.366168</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>-91.7315205</rotation>
+    </char>
+    <char id="AVATOR132" index="2" raceCode="1">
+      <action face="-1" motionface="1">ugc.3b53c0a.stand.xml</action>
+      <head id="PROP56" raceCode="1">
+        <file>ugc.3b53c0a.head.head_angry.xml</file>
+      </head>
+      <x>685.775</x>
+      <y>247.1</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR135" index="3" raceCode="1">
+      <action face="-1" motionface="1">ugc.d244f32.stand.xml</action>
+      <head id="PROP57" raceCode="1">
+        <file>ugc.d244f32.head.head_angry.xml</file>
+      </head>
+      <x>717</x>
+      <y>231.3</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <char id="AVATOR138" index="4" raceCode="1">
+      <action face="-1" motionface="1">ugc.eaabd92.stand.xml</action>
+      <head id="PROP60" raceCode="1">
+        <file>ugc.eaabd92.head.head_angry.xml</file>
+      </head>
+      <x>711.25</x>
+      <y>236.325</y>
+      <xscale>1</xscale>
+      <yscale>1</yscale>
+      <rotation>0</rotation>
+    </char>
+    <prop id="PROP40" index="5">
+      <file>common.nccha_blood01.swf</file>
+      <x>180.25</x>
+      <y>309.4</y>
+      <xscale>2.4024885</xscale>
+      <yscale>2.4024885</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+    </prop>
+    <prop id="PROP41" index="6">
+      <file>common.nccha_blood02.swf</file>
+      <x>117.5436132</x>
+      <y>321.680884</y>
+      <xscale>1.3722637</xscale>
+      <yscale>4.2353617</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+      <color r="ccColorA">14295073</color>
+    </prop>
+    <prop id="PROP42" index="7">
+      <file>ugc.884ac7d.png</file>
+      <x>163.25</x>
+      <y>300.525</y>
+      <xscale>0.3731907</xscale>
+      <yscale>0.3731907</yscale>
+      <face>1</face>
+      <rotation>0</rotation>
+    </prop>
+    <effectAsset id="EFFECT1" themecode="common" index="8">
+      <effect x="0" y="0" w="550" h="310" rotate="0" id="cut" type="ZOOM" isCut="true" isPan="false"/>
+      <x>47</x>
+      <y>24</y>
+      <width>550</width>
+      <height>354</height>
+      <speech>0</speech>
+    </effectAsset>
+  </scene>
+  <sound id="SOUND5" index="0" track="0" vol="8" tts="0">
+    <sfile>ugc.aa45b7d.mp3</sfile>
+    <start>241</start>
+    <stop>552</stop>
+    <fadein duration="0" vol="0"/>
+    <fadeout duration="0" vol="0"/>
+  </sound>
+  <sound id="SOUND2" index="0" track="0" vol="8" tts="1">
+    <sfile>ugc.3b5057a.mp3</sfile>
+    <start>1</start>
+    <stop>66</stop>
+    <fadein duration="0" vol="0"/>
+    <fadeout duration="0" vol="0"/>
+    <ttsdata>
+      <type><![CDATA[tts]]></type>
+      <text><![CDATA[Okay! It's Time For Punishment]]></text>
+      <voice><![CDATA[Damien]]></voice>
+    </ttsdata>
+  </sound>
+  <sound id="SOUND4" index="1" track="0" vol="8" tts="1">
+    <sfile>ugc.bcaa3c5.mp3</sfile>
+    <start>67</start>
+    <stop>240</stop>
+    <fadein duration="0" vol="0"/>
+    <fadeout duration="0" vol="0"/>
+    <ttsdata>
+      <type><![CDATA[tts]]></type>
+      <text><![CDATA[no no no no no no no no no no no no no no no no no no no no no no no. Please, Don't Beat You Up, I'm Sorry]]></text>
+      <voice><![CDATA[Kidaroo]]></voice>
+    </ttsdata>
+  </sound>
+  <sound id="SOUND7" index="2" track="0" vol="8" tts="1">
+    <sfile>ugc.999b603.mp3</sfile>
+    <start>553</start>
+    <stop>600</stop>
+    <fadein duration="0" vol="0"/>
+    <fadeout duration="0" vol="0"/>
+    <ttsdata>
+      <type><![CDATA[tts]]></type>
+      <text><![CDATA[Yay, Sees Fucking Dead]]></text>
+      <voice><![CDATA[oc_james]]></voice>
+    </ttsdata>
+  </sound>
+  <sound id="SOUND9" index="3" track="0" vol="8" tts="1">
+    <sfile>ugc.38e8883.mp3</sfile>
+    <start>601</start>
+    <stop>663</stop>
+    <fadein duration="0" vol="0"/>
+    <fadeout duration="0" vol="0"/>
+    <ttsdata>
+      <type><![CDATA[tts]]></type>
+      <text><![CDATA[Come On Friends, Let's Go Home Right Now]]></text>
+      <voice><![CDATA[oc_james]]></voice>
+    </ttsdata>
+  </sound>
+  <linkage>SOUND2,~~~AVATOR132,SCENE0~~~</linkage>
+  <linkage>SOUND4,~~~AVATOR131,SCENE1~~~</linkage>
+  <linkage>SOUND7,~~~AVATOR132,SCENE3~~~</linkage>
+  <linkage>SOUND9,~~~AVATOR132,SCENE4~~~</linkage>
+</film>
