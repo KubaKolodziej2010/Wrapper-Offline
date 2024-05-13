@@ -8,6 +8,62 @@
 			"id": "dc7e81b"
 		},
 		{
+			"duration": 2638,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[James] Come On Friends, Let's Go Home Right Now",
+			"id": "38e8883.mp3"
+		},
+		{
+			"duration": 2090,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[James] Yay, Sees Fucking Dead",
+			"id": "999b603.mp3"
+		},
+		{
+			"duration": 7308,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Kidaroo] no no no no no no no no no no no no no no no no no no no no no no no. Please, Don't Beat You Up, I'm Sorry",
+			"id": "bcaa3c5.mp3"
+		},
+		{
+			"duration": 2808,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Damien] Okay! It's Time For Punishment",
+			"id": "3b5057a.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "soundeffect",
+			"title": "Beating Sound Effects.mp3",
+			"duration": 13061,
+			"id": "aa45b7d.mp3"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "4a983cc"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "eaabd92"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "c5ebcee"
+		},
+		{
 			"type": "char",
 			"subtype": 0,
 			"title": "Untitled",
