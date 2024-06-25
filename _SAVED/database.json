@@ -1,6 +1,13 @@
 {
 	"assets": [
 		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "4fea631f"
+		},
+		{
 			"duration": 1228,
 			"type": "sound",
 			"subtype": "tts",
