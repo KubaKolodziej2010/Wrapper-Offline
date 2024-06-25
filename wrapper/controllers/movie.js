@@ -1,97 +1,224 @@
-/**
- * movie routes
- */
-// modules
-const httpz = require("@octanuary/httpz")
-// stuff
+const fs = require("fs");
+const stringUtil = require("../utils/string.util");
+const httpz = require("@octanuary/httpz");
 const database = require("../../data/database"), DB = new database();
 const Movie = require("../models/movie");
-
-// create the group
+const nodezip = require("node-zip");
 const group = new httpz.Group();
 
-group
-	// delete
-	.route("GET", /\/api\/movie\/delete\/([^/]+)$/, async (req, res) => {
-		const id = req.matches[1];
+/*
+redirects
+*/
+// go_full (tutorial)
+group.route("*", /\/videomaker\/full\/(\w+)\/tutorial$/, (req, res) => {
+	const theme = req.matches[1];
+	res.redirect(`/go_full?tray=${theme}&tutorial=0`);
+});
+// video list
+group.route("GET", "/dashboard/videos", (res) => {
+	res.redirect("/");
+});
 
-		console.log(`(Warning!) Deleting movie #${id}`);
-		try {
-			await Movie.delete(id);
-			res.json({ status: "ok" });
-		} catch (e) {
-			console.error("This movie just won't die!", e);
-			res.status(404);
-			res.json({ status: "error" });
+/*
+thumbs
+*/
+group.route("*", /\/file\/movie\/thumb\/([^/]+)$/, (req, res) => {
+	const id = req.matches[1];
+
+	const readStream = Movie.thumb(id);
+	res.setHeader("Content-Type", "image/png");
+	readStream.pipe(res); 
+});
+
+/*
+info
+*/
+group.route("GET", "/api/movie/get_info", (req, res) => {
+	const id = req.query.id;
+	if (typeof id == "undefined") {
+		res.status(400).json({ msg: "Movie ID missing." });
+		return;
+	}
+
+	const info = DB.get("movies", id)?.data;
+	if (info) {
+		res.json(info);
+	} else {
+		res.status(404).json({ msg: "Movie not found." });
+	}
+});
+
+/*
+list
+*/
+// list page
+group.route("*", "/", (req, res) => {
+	res.render("list", {});
+});
+// movies
+group.route("GET", "/api/movie/list", (req, res) => {
+	if (typeof req.query.type == "undefined") {
+		console.warn("Controllers.movie#list attempted without specifying the type to be listed.");
+		res.statusCode = 400;
+		res.json({ msg: "No type specified. "});
+	}
+	switch (req.query.type) {
+		case "movie":
+			return res.json(DB.select("movies"));
+		case "starter":
+			return res.json(DB.select("assets", { type: "movie" }));
+		default: {
+			console.warn("Controllers.movie#list attempted with invalid movie type.");
+			res.statusCode = 400;
+			res.json({ msg: "Invalid type. "});
 		}
-	})
-	// list
-	.route("GET", "/api/movies/list", (req, res) => {
-		res.json(DB.select("movies"));
-	})
-	// load
-	.route(
-		"*",
-		["/goapi/getMovie/", /\/file\/movie\/file\/([^/]+)$/],
-		async (req, res) => {
-			const isGet = req.method == "GET";
-			const id = isGet ?
-				req.matches[1] :
-				req.query.movieId;
-			res.assert(id, 400, "");
-			
-			try {
-				const buf = await Movie.load(id, isGet);
-				res.setHeader("Content-Type", "application/zip");
-				res.end(buf);
-			} catch (e) {
-				console.log("Error loading movie:", e);
-				res.status(404);
-				res.end();
-			}
+	}
+});
+
+/*
+delete
+*/
+group.route("GET", /\/api\/movie\/delete\/([^/]+)$/, async (req, res) => {
+	const id = req.matches[1];
+	console.log(`Controllers.movie#delete: Deleting movie #${id}...`);
+	Movie.delete(id).then(() => {
+		console.log(`Controllers.movie#delete: Successfully deleted movie #${id}.`);
+		res.end();
+	}).catch((err) => {
+		if (typeof err.status !== "undefined" && err.status == 404) {
+			console.warn("Controllers.movie#delete attempted on nonexistent movie.");
+			res.statusCode = 404;
+			return res.json({ msg: "Movie doesn't exist." });
 		}
-	)
-	// redirect
-	.route("*", /\/videomaker\/full\/(\w+)\/tutorial$/, (req, res) => {
-		const theme = req.matches[1];
-
-		res.redirect(`/go_full?tray=${theme}&tutorial=0`);
-	})
-
-	// redirect
-	.route("GET", "/dashboard/videos", (res) => {
-		res.redirect(`/`);
-	})
-	// save
-	//  #movies
-	.route("POST", "/goapi/saveMovie/", async (req, res) => {
-		res.assert(req.body.body_zip, 400, "1");
-		const trigAutosave = req.body.is_triggered_by_autosave;
-		res.assert(!(trigAutosave && !req.body.movieId), 200, "0");
-
-		const body = Buffer.from(req.body.body_zip, "base64");
-		const thumb = trigAutosave ?
-			null : Buffer.from(req.body.thumbnail_large, "base64");
-
-		const id = await Movie.save(body, thumb, req.body.movieId)
-		res.end("0" + id);
-	})
-	//  #starter
-	.route("POST", "/goapi/saveTemplate/", async (req, res) => {
-		res.assert(req.body.body_zip, req.body.thumbnail_large, 400, "1");
-		const body = Buffer.from(req.body.body_zip, "base64");
-		const thumb = Buffer.from(req.body.thumbnail_large, "base64");
-
-		const id = await Movie.save(body, thumb, req.body.movieId, true)
-		res.end("0" + id);
-	})
-	// thumb
-	.route("*", /\/file\/movie\/thumb\/([^/]+)$/, (req, res) => {
-		const id = req.matches[1];
-
-		const readStream = Movie.thumb(id);
-		res.setHeader("Content-Type", "image/png");
-		readStream.pipe(res); 
+		console.error("Controllers.movie#delete error:", err);
+		res.statusCode = 500;
+		res.json({ msg: "Internal server error." });
 	});
+});
+
+/*
+upload
+*/
+group.route("POST", "/api/movie/upload", (req, res) => {
+	const file = req.files.import;
+	const isStarter = req.body.is_starter;
+	if (typeof file == "undefined") {
+		console.warn("Controllers.movie#upload attempted without a file.");
+		res.statusCode = 400;
+		return res.json({ msg: "No file." });
+	}
+
+	const path = file.filepath, buffer = fs.readFileSync(path);
+	if (
+		file.mimetype !== "application/x-zip-compressed" &&
+		file.mimetype !== "application/zip" &&
+		!buffer.slice(0, 4).equals(
+			Buffer.from([0x50, 0x4b, 0x03, 0x04])
+		)
+	) {
+		console.warn("Controllers.movie#upload attempted with invalid file.");
+		res.statusCode = 400;
+		return res.json({ msg: "Movie is not a zip." });
+	}
+
+	Movie.upload(buffer, isStarter).then((id) => {
+		fs.unlinkSync(path);
+		res.json({ id: id });
+	}).catch((err) => {
+		console.error("Controllers.movie#upload error:", err);
+		res.statusCode = 500;
+		res.json({ msg: null });
+	});
+});
+
+/*
+pack
+*/
+group.route(
+	"*",
+	["/goapi/getMovie/", /\/file\/movie\/file\/([^/]+)$/],
+	(req, res) => {
+		const isPost = req.method == "POST";
+		const id = req.body.movieId = isPost ?
+			req.query.movieId :
+			req.matches[1];
+		if (typeof id == "undefined") {
+			console.warn("Controllers.movie#pack attemped without ID.");
+			res.statusCode = 400;
+			return res.end(stringUtil.xmlError(400, "ID not specified."));
+		}
+
+		Movie.packMovie(id).then((zipped) => {
+			if (isPost) {
+				zipped = Buffer.concat([Buffer.alloc(1, 0), zipped]);
+			}
+			res.setHeader("Content-Type", "application/zip");
+			res.end(zipped);
+		}).catch((err) => {
+			if (typeof err.status !== "undefined" && err.status == 404) {
+				console.warn("Controllers.movie#pack attempted on nonexistent movie.");
+				res.statusCode = 404;
+				return res.end(stringUtil.xmlError(404, "Movie doesn't exist."));
+			}
+			console.error("Controllers.movie#pack error:", err);
+			res.statusCode = 500;
+			res.end(stringUtil.xmlError(500, "Internal server error."));
+		});
+	}
+);
+
+/*
+save
+*/
+group.route("POST", ["/goapi/saveMovie/", "/goapi/saveTemplate/"], (req, res) => {
+	if (!req.body.body_zip) {
+		console.warn("Controllers.movie#save attempted without movie zip.");
+		res.statusCode = 400;
+		return res.end(stringUtil.xmlError(400, "No movie zip."));
+	}
+	const trigAutosave = req.body.is_triggered_by_autosave;
+	const saveAsStarter = req.parsedUrl.pathname == "/goapi/saveTemplate/";
+	// check if we're autosaving an existing movie
+	if (trigAutosave && !req.body.movieId) {
+		return res.end("0");
+	} else if ( // check if there's a thumbnail in case this is a manual save
+		!trigAutosave && !req.body.thumbnail_large
+	) {
+		console.warn("Controllers.movie#save manually attempted without a thumbnail.");
+		res.statusCode = 400;
+		return res.end(stringUtil.xmlError(400, "A thumbnail is required on manual saves."));
+	}
+
+	const body = Buffer.from(req.body.body_zip, "base64");
+	const thumb = Buffer.from(req.body.thumbnail_large, "base64");
+	if (!body.slice(0, 4).equals(
+		Buffer.from([0x50, 0x4b, 0x03, 0x04])
+	)) {
+		console.warn("Controllers.movie#save attempted with invalid file.");
+		res.statusCode = 400;
+		return res.end(stringUtil.xmlError(400, "Movie is not a zip."));
+	}
+
+	console.log(`Controllers.movie#save: Saving movie #${req.body.movieId || "<new movie>"}...`);
+	const xmlStream = nodezip.unzip(body)["movie.xml"].toReadStream();
+	let buffers = [];
+	xmlStream.on("data", (b) => buffers.push(b));
+	xmlStream.on("end", () => {
+		const xml = Buffer.concat(buffers);
+		Movie.save(xml, thumb, req.body.movieId, saveAsStarter).then((id) => {
+			console.log(`Controllers.movie#save: Successfully saved movie #${id}.`);
+			res.end("0" + id);
+		}).catch((err) => {
+			if (typeof err.status !== "undefined" && err.status == 404) {
+				console.warn("Controllers.movie#save attempted on nonexistent movie ID.");
+				res.statusCode = 404;
+				return res.end(stringUtil.xmlError(404, "Specified movie doesn't exist."));
+			}
+			console.error("Controllers.movie#save error:", err);
+			res.statusCode = 500;
+			res.end(stringUtil.xmlError(500, "Internal server error."));
+		});
+	});
+});
 
 module.exports = group;

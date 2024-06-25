@@ -1,43 +1,81 @@
-/**
- * movie api
- */
-// module
 const fs = require("fs");
-const nodezip = require("node-zip");
 const path = require("path");
-// vars
-const folder = path.join(__dirname, "../../", process.env.SAVED_FOLDER);
-const base = Buffer.alloc(1, 0);
-// stuff
 const database = require("../../data/database"), DB = new database();
-const fUtil = require("../../utils/fileUtil");
-const parse = require("../models/parse");
+const stringUtil = require("../utils/string.util");
+const Parse = require("../utils/movieParser.util");
+const folder = path.join(__dirname, "../../", process.env.SAVED_FOLDER);
 
 module.exports = {
 	/**
-	 * Deletes a movie.
+	 * deletes a movie do i really have to explain this to you
 	 * @param {string} id 
+	 * @returns {Promise<void>}
+	 * @throws {Promise<{status: number}>}
 	 */
 	delete(id) {
-		DB.delete("movies", id);
-
-		// delete the actual file
-		fs.unlinkSync(path.join(folder, `${id}.xml`));
-		fs.unlinkSync(path.join(folder, `${id}.png`));
+		return new Promise((res, rej) => {
+			if (DB.get("movies", id)) {
+				DB.delete("movies", id);
+			} else if (DB.select("assets", {
+				id: id,
+				type: "movie"
+			}).length > 0) {
+				DB.delete("assets", id);
+			} else {
+				return rej({ status: 404 });
+			}
+			fs.unlinkSync(path.join(folder, id + ".xml"));
+			fs.unlinkSync(path.join(folder, id + ".png"));
+			res();
+		});
 	},
 
 	/**
-	 * Parses a saved movie for the LVM.
-	 * @param {string} mId 
-	 * @param {boolean} isGet 
+	 * Packs a movie into a zip to be loaded by the video maker. :3 btw
+	 * @param {string} id
 	 * @returns {Promise<Buffer>}
 	 */
-	async load(mId, isGet = true) {
-		const filepath = path.join(folder, `${mId}.xml`);
+	async packMovie(id) {
+		if (!this.exists(id)) {
+			throw { status: 404 };
+		} 
+		const filepath = path.join(folder, id);
+		const xml = fs.readFileSync(filepath + ".xml");
+		const thumbnail = fs.readFileSync(filepath + ".png");
+		const zipped = await Parse.pack(xml, thumbnail);
+		return zipped;
+	},
 
-		const buffer = fs.readFileSync(filepath);
-		const parsed = await parse(buffer);
-		return isGet ? parsed : Buffer.concat([base, parsed]);
+	/*
+	extraction
+	*/
+
+	/**
+	 * @param {string} id 
+	 * @returns {Promise<{
+	 *  filepath: string,
+	 *  start: number,
+	 *  stop: number,
+	 *  trimStart: number,
+	 *  trimEnd: number,
+	 *  fadeIn: {
+	 *   duration: number;
+	 *   vol: number;
+	 *  },
+	 *  fadeOut: {
+	 *   duration: number;
+	 *   vol: number;
+	 *  }
+	 * }[]>}
+	 */
+	async extractAudioTimes(id) {
+		if (!this.exists(id)) {
+			throw { status: 404 };
+		}
+		const filepath = path.join(folder, `${id}.xml`);
+		const xml = fs.readFileSync(filepath);
+		const audio = await Parse.extractAudioTimes(xml);
+		return audio;
 	},
 
 	/**
@@ -52,8 +90,11 @@ module.exports = {
 	 * 	id: string
 	 * }} 
 	 */
-	async meta(id) {
+	async extractMeta(id) {
 		const filepath = path.join(folder, `${id}.xml`);
+		if (!fs.existsSync(filepath)) {
+			throw { status: 404 };
+		}
 		const buffer = fs.readFileSync(filepath);
 
 		// title
@@ -90,58 +131,73 @@ module.exports = {
 	},
 
 	/**
-	 * Extracts the movie XML from a zip and saves it.
-	 * @param {Buffer} body the movie xml
+	 * what do you think
+	 * @param {Buffer} xml the movie xml
 	 * @param {Buffer} thumb movie thumbnail in .png format
-	 * @param {string} mId movie id, if overwriting an old one
-	 * @param {boolean} starter is it a starter
+	 * @param {string} id movie id, if overwriting an old one
+	 * @param {boolean} saveAsStarter
 	 * @returns {Promise<string>}
 	 */
-	async save(body, thumb, id, starter) {
-		return new Promise((resolve, reject) => {
-			id ||= fUtil.generateId();
+	async save(xml, thumbnail, id, saveAsStarter) {
+		return new Promise((res, rej) => {
+			const newMovie = typeof id == "undefined" || id.length == 0;
+			if (!newMovie && !this.exists(id)) {
+				return rej({ status: 404 });
+			}
+			id ||= stringUtil.generateId();
 
 			// save the thumbnail on manual saves
-			if (thumb) {
-				fs.writeFileSync(path.join(folder, `${id}.png`), thumb);
+			if (typeof thumbnail !== "undefined") {
+				fs.writeFileSync(path.join(folder, id + ".png"), thumbnail);
 			}
-			// extract the movie xml and save it
-			const zip = nodezip.unzip(body);
-			const xmlStream = zip["movie.xml"].toReadStream();
+			fs.writeFileSync(path.join(folder, id + ".xml"), xml);
 
-			let writeStream = fs.createWriteStream(path.join(folder, `${id}.xml`));
-			xmlStream.on("data", b => writeStream.write(b));
-			xmlStream.on("end", async () => {
-				writeStream.close((e) => {
-					if (e) throw e;
-
-					this.meta(id).then((meta) => {
-						let type;
-						const info = {
-							id,
-							duration: meta.durationString,
-							date: meta.date,
-							title: meta.title,
-							sceneCount: meta.sceneCount,
-						}
-						if (starter) {
-							info.type = "movie";
-							type = "assets";
-						} else {
-							type = "movies";
-						}
-
-						try {
-							DB.update(type, id, info);
-						} catch (e) {
-							console.log("This movie does not exist in the database. Inserting...", e);
-							DB.insert(type, info);
-						}
-						resolve(id);
-					});
-				});
+			this.extractMeta(id).then((meta) => {
+				let into;
+				const info = {
+					id: id,
+					duration: meta.durationString,
+					date: meta.date,
+					title: meta.title,
+					sceneCount: meta.sceneCount,
+				}
+				if (
+					(newMovie && saveAsStarter) ||
+					DB.select("assets", {
+						id: id,
+						type: "movie"
+					}).length > 0
+				) {
+					info.type = "movie";
+					into = "assets";
+				} else {
+					into = "movies";
+				}
+				if (!DB.update(into, id, info)) {
+					console.log("Models.movie#save: Inserting movie into database...");
+					DB.insert(into, info);
+				}
+				res(id);
 			});
 		});
+	},
+
+	/**
+	 * checks if a movie exists
+	 * @param {string} id
+	 * @returns {boolean}
+	 */
+	exists(id) {
+		if (
+			!DB.get("movies", id) &&
+			DB.select("assets", {
+				id: id,
+				type: "movie"
+			}).length == 0
+		) {
+			return false;
+		}
+		return true;
 	},
 
 	/**
@@ -149,7 +205,8 @@ module.exports = {
 	 * @param {string} id 
 	 * @returns {fs.readStream}
 	 */
-	thumb(id) { // look for match in folder
+	thumb(id) {
+		// look for match in folder
 		const filepath = path.join(folder, `${id}.png`);
 		if (fs.existsSync(filepath)) {
 			const readStream = fs.createReadStream(filepath);
@@ -158,4 +215,38 @@ module.exports = {
 			throw new Error("Movie doesn't exist.");
 		}
 	},
-}
+
+	/**
+	 * unpacks a movie zip
+	 * @param {Buffer} body zip containing the movie and its assets
+	 * @returns {Promise<string>}
+	 */
+	upload(body, isStarter) {
+		return new Promise(async (res, rej) => {
+			const id = stringUtil.generateId();
+			const [xml, thumb] = await Parse.unpack(body);
+
+			fs.writeFileSync(path.join(folder, `${id}.xml`), xml);
+			fs.writeFileSync(path.join(folder, `${id}.png`), thumb);
+			this.extractMeta(id).then((meta) => {
+				let type;
+				const info = {
+					id,
+					duration: meta.durationString,
+					date: meta.date,
+					title: meta.title,
+					sceneCount: meta.sceneCount,
+				}
+				if (isStarter) {
+					info.type = "movie";
+					type = "assets";
+				} else {
+					type = "movies";
+				}
+
+				DB.insert(type, info);
+				res(id);
+			});
+		});
+	}
+};
