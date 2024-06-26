@@ -51,6 +51,8 @@ function name2Font(font) {
 			return "FontFileLOne";
 		case "Telex Regular":
 			return "FontFileTelex";
+                case "GoAnimate":
+			return "FontFileGoAnimate";
 		case "":
 		case null:
 			return '';
