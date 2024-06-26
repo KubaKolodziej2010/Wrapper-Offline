@@ -1,6 +1,62 @@
 {
 	"assets": [
 		{
+			"duration": 5381,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Eric] Oh No You Don't, How Dear You Wear Swimsuit, That's It, i'm Calling Kuba",
+			"id": "3aa1fc2a.mp3"
+		},
+		{
+			"duration": 8045.999999999999,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[James] Yes, I Wear Swimsuit, Yes, I Wear Swimsuit, Yes, I Wear Swimsuit, Yes, I Wear Swimsuit",
+			"id": "5a25ad41.mp3"
+		},
+		{
+			"duration": 6949,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[James] Yes, I Wear Swimsuit Yes, I Wear Swimsuit Yes, I Wear Swimsuit Yes, I Wear Swimsuit",
+			"id": "86f58daa.mp3"
+		},
+		{
+			"duration": 3161,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[James] Too Bad, I'm Going To Wear Swimsuit And That's Final",
+			"id": "c8af71c2.mp3"
+		},
+		{
+			"duration": 10867,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Brian (TTSTool)] No No No No No No No No No No No No No No No No No No No No No No No No No No No No No No No No No, Please Don't Wear Swimsuit",
+			"id": "50e1aae2.mp3"
+		},
+		{
+			"duration": 3500,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[James] Stand Back, I'm Going To Swimsuit To Classic Caillou",
+			"id": "c96bc8c3.mp3"
+		},
+		{
+			"duration": 2638,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[James] i'm Going To Wear Swimsuit To Classic Caillou",
+			"id": "d93c8086.mp3"
+		},
+		{
+			"type": "char",
+			"subtype": 0,
+			"title": "Untitled",
+			"themeId": "family",
+			"id": "23616031"
+		},
+		{
 			"type": "char",
 			"subtype": 0,
 			"title": "Untitled",
