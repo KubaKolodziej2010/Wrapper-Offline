@@ -1,6 +1,20 @@
 {
 	"assets": [
 		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Baroque Coffee House (Sting) - Doug Maxwell_Media Right Productions.mp3",
+			"duration": 8176,
+			"id": "cc304792.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "bgmusic",
+			"title": "Parisian Cafe - Aaron Kenny.mp3",
+			"duration": 96705,
+			"id": "3774356d.mp3"
+		},
+		{
 			"type": "char",
 			"subtype": 0,
 			"title": "Untitled",
