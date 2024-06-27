@@ -1,6 +1,27 @@
 {
 	"assets": [
 		{
+			"duration": 3448,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Eric] Oh My God, The Eric Voice Working Again",
+			"id": "7458b607.mp3"
+		},
+		{
+			"duration": 705,
+			"type": "sound",
+			"subtype": "tts",
+			"title": "[Eric] test",
+			"id": "ae66dd26.mp3"
+		},
+		{
+			"type": "sound",
+			"subtype": "voiceover",
+			"title": "Hey_Guys_This_is_a__672.mp3",
+			"duration": 4807,
+			"id": "391743cf.mp3"
+		},
+		{
 			"type": "sound",
 			"subtype": "bgmusic",
 			"title": "Baroque Coffee House (Sting) - Doug Maxwell_Media Right Productions.mp3",
@@ -1221,6 +1242,13 @@
 		}
 	],
 	"movies": [
+		{
+			"id": "2a6768ad",
+			"duration": "00:04",
+			"date": "2024-06-27T14:08:09.656Z",
+			"title": "Eric Voice Working Test",
+			"sceneCount": 1
+		},
 		{
 			"id": "47e6cb1c",
 			"duration": "00:02",

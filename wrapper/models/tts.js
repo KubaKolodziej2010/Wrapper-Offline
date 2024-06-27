@@ -141,11 +141,10 @@ module.exports = function processVoice(voiceName, rawText) {
 				case "pollyold": {
 					const req = https.request(
 						{
-							hostname: "101.99.94.14",														
+							hostname: "gonutts.net",
 							path: voice.arg,
 							method: "POST",
-							headers: { 			
-								Host: "gonutts.net",					
+							headers: { 
 								"Content-Type": "application/x-www-form-urlencoded"
 							}
 						},
@@ -157,16 +156,9 @@ module.exports = function processVoice(voiceName, rawText) {
 								const beg = html.indexOf("/tmp/");
 								const end = html.indexOf("mp3", beg) + 3;
 								const sub = html.subarray(beg, end).toString();
-								//console.log(html.toString());
 
 								https
-									.get({
-										hostname: "101.99.94.14",	
-										path: `/${sub}`,
-										headers: {
-											Host: "gonutts.net"
-										}
-									}, res)
+									.get(`https://gonutts.net${sub}`, res)
 									.on("error", rej);
 							});
 						}
